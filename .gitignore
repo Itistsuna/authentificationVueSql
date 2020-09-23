@@ -1,0 +1,14 @@
+/node_modules
+package-lock.json
+/auth_JWT_PureSQL/node_modules
+/auth_JWT_PureSQL/package.json
+/vue/build
+/vue/config
+/vue/static
+.babelrc
+.editorconfig
+.postcssrc.js
+index.html
+README.md
+/vue/package.json
+/vue/.gitignore
