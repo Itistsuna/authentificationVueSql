@@ -49,6 +49,33 @@ app.post('/sign-in',(req,res)=>{
     })
 })
 
+app.post('/authentification',verifyToken)
+
+// Verify Token
+
+async function verifyToken (req, res, next){
+    const bearerHeader = req.body.token
+    if(typeof bearerHeader !== 'undefined' && bearerHeader !== ''){
+        jwt.verify(bearerHeader, config.secret, (err,authData)=>{
+            if (err) {
+                console.log(err) 
+                res.sendStatus(403) 
+            }
+            else {
+                res.json({
+                    connect: true,
+                    authData
+                })
+            }
+        })
+    } else {
+        res.send({
+            connect: false
+        })
+    }
+    
+}
+
 app.listen(8080, function(){
     console.log('listening on http://localhost:8080');
 })
